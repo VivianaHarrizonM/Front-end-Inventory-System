@@ -1,6 +1,8 @@
 # InventarioApp
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.1.
+Is an inventory system developed using Java with Spring Boot for the backend and Angular for the frontend. It allows you to manage products, track stock, and perform basic inventory operations.
+
 
 ## Development server
 
