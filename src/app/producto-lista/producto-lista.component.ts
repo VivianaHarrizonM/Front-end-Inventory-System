@@ -19,26 +19,31 @@ export class ProductoListaComponent {
     this.obtenerProductos();
   }
 
-  private obtenerProductos():void{
-    this.productoServicio.obtenerProductosLista().subscribe(
-      {
-        next: (datos) => {
-          this.productos = datos;
-        },
-        error: (error) =>{
+  private obtenerProductos(): void {
+    this.productoServicio.obtenerProductosLista().subscribe({
+      next: (datos) => {
+        this.productos = datos;
+      },
+      error: (error) => {
         console.error("Error al obtener los productos", error);
-        }
+        alert("Ocurrió un error al obtener los productos. Por favor, intenta más tarde.");
       }
-    );
+    });
   }
 
   editarProducto(id: number){
     this.enrutador.navigate(['editar-producto', id]);
   }
-  eliminarProducto(id: number){
+  
+  eliminarProducto(id: number) {
     this.productoServicio.eliminarProducto(id).subscribe({
-      next: (datos) => this.obtenerProductos(),
-      error: (erroes) => console.log(erroes)
-    })
+      next: () => {
+        this.obtenerProductos();
+      },
+      error: (error) => {
+        console.error("Error al eliminar el producto", error);
+        alert("No se pudo eliminar el producto. Intenta más tarde.");
+      }
+    });
   }
 }
