@@ -10,3 +10,4 @@ export const routes: Routes = [
   {path: 'agregar-producto', component: AgregarProductoComponent },
   {path: 'editar-producto/:id', component: EditarProductoComponent},
 ];
+
